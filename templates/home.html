@@ -14,6 +14,8 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha256-fzFFyH01cBVPYzl16KT40wqjhgPtq6FFUB6ckN2+GGw=" crossorigin="anonymous"></script>
+
   </div>
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -31,17 +33,36 @@
 
 <body class=text-white id="homepage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-
-
-  <header>
-    <div id="carouselExampleIndicators" class="carousel slide" style="position:relative" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <nav class="navbar mynavv navbar-default navbar-expand-lg fixed-top mynav">
+    <nav class="navbar mynavv navbar-default navbar-expand-lg fixed-top mynav">
+        <div class="container">
+          <a class="" href="#"><img src="/static/icons/B&Blogo.png" height=60> </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""><img src="/static/icons/menu.svg/ " height=35></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link " href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#Events">Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#team">Team</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#videos">Videos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+<div id="home">
+          <nav class="navbar mynavv navbar-default navbar-expand-lg fixed-top mynav">
           <div class="container">
             <a class="" href="#"><img src="/static/icons/B&Blogo.png" height=60> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -69,24 +90,32 @@
             </div>
           </div>
         </nav>
+  <header>
+    <div id="carouselExampleIndicators" class="carousel slide" style="position:relative" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
 
         <div class="carousel-item active"
           style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-          <div class="carousel-caption d-none d-md-block">
-            <h2 class="display-4">First Slide</h2>
-            <p class="lead imagetext">This is a description for the first slide.</p>
+          <div class="carousel-caption d-md-block">
+            <h2 class="display-4">WE ARE THE COMPANY OF GAMERS</h2>
+            <p class="lead ">This is a description for the first slide.</p>
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
         <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-          <div class="carousel-caption d-none d-md-block">
+          <div class="carousel-caption d-md-block">
             <h2 class="display-4">Second Slide</h2>
             <p class="lead">This is a description for the second slide.</p>
           </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
         <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-          <div class="carousel-caption d-none d-md-block">
+          <div class="carousel-caption d-md-block">
             <h2 class="display-4">Third Slide</h2>
             <p class="lead">This is a description for the third slide.</p>
           </div>
@@ -102,14 +131,15 @@
       </a>
     </div>
   </header>
+  </div>
 
   <div class="about jumbotron" id=about>
     <strong class=titlemain>ABOUT</strong>
     <p>{{about.body}}</p>
 
   </div>
-
-  <div class=titlemain>TOP CLIENTS</div>
+<hr>
+  <div class=titlemain><h1>TOP CLIENTS</h1></div>
   <div class=close-clients>
       
       
@@ -125,10 +155,10 @@
       </div>
       </div>
       </div>
- 
+ <hr>
   <div id="Events">
     <div class=titlemain>
-      <h1>EVENTS</h1>
+    <h1>OUR EVENTS</h1>
     </div>
     <div class="titlebox text-center">
       <div class="btn-group mt-0">
@@ -150,24 +180,24 @@
 
         {% for event in  upcoming_events %}
 
-        <div class=card>
+        <div class=card style="padding-bottom:0;">
           {%if user.is_authenticated%}
-          <a class="confirm-delete" href="{% url 'gallery:delete' id=event.id %}"><span class="fa fa-remove"></span></a>
+          <a class="confirm-delete" href="{% url 'gallery:delete' id=event.id %}"><span class="fa fa-remove"></span></span></a>
           {%endif%}
 
-          <div class="info">
+         
             <div class='title'>{{event.title|title}}</div>
 
-            <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i>{{event.created_date}}</p>
-            <p class="desc">{{event.description|truncatewords:10}}</p>
-          </div>
+            <p class="dat" style="color:black"><i class="fa fa-calendar" aria-hidden="true"></i>{{event.created_date}}</p>
+            <p class="description" style="color:black" >{{event.description|truncatechars:100 }}</p>
+          
           <div class="contain embed-responsive embed-responsive-16by9">
             {%for img in event.images%}
             <img class="img embed-responsive-item" src={{img.image.url}} height=500px width=100%>
             {% endfor %}
             <a href="{% url 'gallery:eventdetail' id=event.id %}">
               <div class="middle">
-                <div class="text">View Event</div>
+                <div class=text>View Event</div>
                 {%if user.is_authenticated%}
                 <form action="/edit_event/{{event.id}}" method=get>
                   <button type=submit class="text texta">Mark Completed</button>
@@ -175,7 +205,6 @@
 
                 
                 {%endif%}
-                
               </div>
             </a>
 
@@ -185,6 +214,7 @@
 
         {% endfor %}
       </main>
+      
       {% if upcoming_events%}
       <form action="../upcoming_events/" type=get>
         <button class="btn btn-primary btn-sm" type=submit>See More</button>
@@ -196,17 +226,17 @@
 
         {% for event in  completed_events %}
 
-        <div class=card>
+        <div class=card style="padding-bottom:0;">
           {%if user.is_authenticated%}
           <a class="confirm-delete" href="{% url 'gallery:delete' id=event.id %}"><span class="fa fa-remove"></span></span></a>
           {%endif%}
 
-          <div class="info">
+         
             <div class='title'>{{event.title|title}}</div>
 
-            <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i>{{event.created_date}}</p>
-            <p class="desc">{{event.description|truncatewords:10}}</p>
-          </div>
+            <p class="dat" style="color:black"><i class="fa fa-calendar" aria-hidden="true"></i>{{event.created_date}}</p>
+            <p class="description" style="color:black" >{{event.description|truncatechars:100 }}</p>
+          
           <div class="contain embed-responsive embed-responsive-16by9">
             {%for img in event.images%}
             <img class="img embed-responsive-item" src={{img.image.url}} height=500px width=100%>
@@ -229,36 +259,34 @@
       </form>
       {%endif%}
     </div>
-
-    <br><br>
-    <div class=about>
+<hr>
+    <br>
+    
       <div class=titlemain id=team>OUR TEAM</div>
-    </div>
-    <div style="overflow-x:hidden">
-      <div class=row>
-      {%for person in team%}
-      <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 profilecontainer">
-        <div class="imagecontain ">
-
-          <img class="img" src={{person.image.url}} style="height:100%;width:100%;object-fit:cover">
+    
+    <div class="container">
+  <div class="row" style="margin-top: 88px;">
+  {%for person in team%}
+    <!-- Team Member 1 -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow imagecontain">
+        <img class="img" src={{person.image.url}} style="height:100%;width:100%;object-fit:cover">
           <a href="/accounts/team_profile/{{person.id}}/">
             <div class="middle">
               <p class=text>View Profile</p>
             </div>
           </a>
-
           <div class="profilename">
             <div class="name">{{person.first_name}} {{person.last_name}}</div>
             <div class="position">{{person.position}}</div>
           </div>
-        </div>
-
       </div>
+    </div>
+    {%endfor%}
 
-      {%endfor%}
-      {%if user.is_authenticated%}
-      <div class="col-sm-6 col-md-6 col-lg-3">
-        <div class="imagecontain">
+    {%if user.is_authenticated%}
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow imagecontain">
 
           <img class="img profileimage" src="../static/icons/B&Blogo.png"
             style="height:100%;width:100%;object-fit:cover">
@@ -273,35 +301,36 @@
 
     
     {%endif%}
-    </div>
+
   </div>
+  <!-- /.row -->
+
+</div>
 
 
-
+<hr>
   <br><br>
   <div class=titlemain id=videos>VIDEOS</div>
-  <main>
-    
 
-    {%if user.is_authenticated%}
-    <div class="card" style="background-color:gray">
-      <div class="">Add Video</div>
-      <div class="contain" style="top:30%">
-
-        <form action="/videos/" method="POST">
-          <div>Video Title</div>
-          <input type=text name="video_title" class="form-control" placeholder="Video Title" required>
-          <div>Video Url</div>
-          <input type=text name="video_url" class="form-control" placeholder="Youtube Video Link (Url)" required>
-          {%csrf_token%}
-          <button class="form-control btn btn-md" type=submit>Add</button>
-        </form>
-      </div>
-    </div>
-
-
-    {%endif%}
-  </main>
+  <div class="col-md-2"></div>
+  <div class="col-md-10 m-1">
+          <main>
+                  {%for video in videos%}
+                  
+                  <div class=card>
+                  <div class=contain>
+                  
+                  <iframe width="100%%" height="400"
+                  src="https://www.youtube.com/embed/{{video.url}}" allow="accelerometer;  encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                  </iframe>
+                  </div> 
+                  
+                  </div>
+                  {%endfor%}
+                  </main>
+                  
+  </div>
+  <div class="col-md-1"></div>
   <br><br>
 
   <form action="../videos" type=get class="mt-2">
@@ -353,7 +382,7 @@
             <div class="widget no-box">
               <h5 class="widget-title">Get Started<span></span></h5>
               <p>Unvail the gaming Experience with us.</p>
-              <a class="btn" href="#." target="_blank">Search</a>
+              
             </div>
           </div>
 
@@ -399,6 +428,7 @@
 
 
   <script src="{% static 'js/bootstrap.min.js' %}" async defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha256-fzFFyH01cBVPYzl16KT40wqjhgPtq6FFUB6ckN2+GGw=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>

@@ -1,33 +1,36 @@
 .mybrand {
   position: fixed;
 }
+
 body,
 html {
-  overflow-x:hidden;
+  overflow-x: hidden;
   height: 100%;
-  width:100%;
-  margin:0;
-  padding:0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin:0;
-  padding:0;
-  position:relative;
-  overflow-x:hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
   margin: 0;
   font-family: "Montserrat";
-  background: radial-gradient(50% 50% at 50% 50%, #2b3780 0%, #0b1023 100%);
+  background: #f7f7f7;
+  /* background: radial-gradient(50% 50% at 50% 50%, #2b3780 0%, #0b1023 100%); */
   font-family: "Manjari", sans-serif;
 }
 
 h1 {
-  margin: 5rem;
+  margin: 2rem;
 }
 
 .logo_container {
   display: flex;
 }
+
 .title_rectangle {
   position: absolute;
   width: 137px;
@@ -36,10 +39,13 @@ h1 {
   top: 188px;
   background: #181818;
 }
+
 .titlebox {
   position: relative;
   height: 200px;
+  font-family: 'Franklin Gothic Medium'sans-serif;
 }
+
 .btn-group {
   margin: 0;
   position: absolute;
@@ -47,7 +53,9 @@ h1 {
   left: 35%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+  cursor: pointer;
 }
+
 .upcoming {
   position: relative;
   top: 8rem;
@@ -62,9 +70,11 @@ h1 {
   font-weight: bold;
   color: rgb(252, 134, 16);
 }
+
 .contain {
   position: relative;
 }
+
 .completed {
   margin-left: 1rem;
   position: relative;
@@ -80,16 +90,19 @@ h1 {
   font-weight: bold;
   color: rgb(252, 134, 16);
 }
+
 .upcoming:hover,
 .completed:hover {
   border-color: #ff8d1e;
 }
+
 .img {
-  border-radius: 2px;
+  border-radius: 7px;
   opacity: 1;
   transition: 0.5s ease;
   backface-visibility: hidden;
 }
+
 .middle {
   transition: 0.5s ease;
   opacity: 0;
@@ -99,19 +112,24 @@ h1 {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
+
 .text {
   background-color: rgba(216, 224, 226, 0.7);
   border: 1px solid white;
-  border-radius: 30px;
+  border-radius: 13px;
   color: white;
   font-size: 1.4em;
-  padding: 10px 20px;
+  padding: 10px 10px;
   text-align: center;
   align-content: center;
   font-family: "Manjari";
   font-weight: bold;
+  display: inline-block;
 }
+
 .texta {
   background-color: rgba(216, 224, 226, 0.7);
   border: 1px solid white;
@@ -124,47 +142,58 @@ h1 {
   font-family: "Manjari";
   font-weight: bold;
 }
-.text :hover{
-  cursor:pointer;
-  border-color:burlywood;
+
+.text :hover {
+  cursor: pointer;
+  border-color: burlywood;
 }
 
 .middle:hover .text {
   background-color: #9698a186;
-  
+
 }
-.texta :hover{
-  background-color:rgb(255, 153, 0);
-  cursor:pointer;
- }
+
+.texta :hover {
+  background-color: rgb(255, 153, 0);
+  cursor: pointer;
+}
+
 .contain:hover .img {
   opacity: 0.6;
 }
+
 .contain:hover .middle {
   opacity: 1;
 }
+
 .title {
   font-size: 15px;
   font-family: "Rubik Mono One", sans-serif;
   color: black;
 }
+
 .date {
   font-family: "Rajdhani", sans-serif;
+  color: black;
 }
+
 .title-expanded {
   font-size: 40px;
 }
+
 a:hover,
 a:visited,
 a:link,
 a:active {
   text-decoration: none;
 }
+
 @media only screen and (max-width: 600px) {
-}
-.titlebox {
-  position: relative;
-  height: 200px;
+
+  .titlebox {
+    position: relative;
+    height: 200px;
+  }
 }
 
 
@@ -210,9 +239,10 @@ a:active {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
-  .profileimage{
-      width:10vh;
-      height:auto;
+
+  .profileimage {
+    width: 10vh;
+    height: auto;
   }
 }
 
@@ -221,6 +251,7 @@ a:active {
   text-align: center;
   color: white;
 }
+
 .carousel-item {
   height: 100vh;
   min-height: 350px;
@@ -238,7 +269,7 @@ a:active {
   left: 50%;
   transform: translate(-100%, -100%);
   color: black;
-  font-family: Rajdhani, sans-serif;
+  font-family: "Rajdhani", sans-serif;
   font-size: 20px;
   overflow: hidden;
 }
@@ -266,6 +297,7 @@ a:active {
 .homecontainer {
   position: relative;
 }
+
 .topnav a {
   color: #f2f2f2;
   text-align: center;
@@ -283,21 +315,27 @@ a:active {
   opacity: 1;
   text-align: top;
 }
+
 .swiper-slide img {
   height: 100vh;
   width: 100%;
   position: relative;
 }
+
 .imagewrapper {
   position: relative;
 }
+
 .about {
- margin:1rem;
+  margin: 0rem;
   position: relative;
-  background-color: black;
-  font-family: Rajdhani, sans-serif;
+  background-color: #210d0d;
+  font-family: "Rajdhani", sans-serif;
   font-size: 18px;
+  height: max-content;
+  border-radius: 0%
 }
+
 button .read-more {
   position: absolute;
   -webkit-transition-duration: 0.4s;
@@ -309,21 +347,25 @@ button .read-more {
   text-align: center;
   margin-right: 5rem;
 }
+
 .close-clients {
   height: auto;
   background-color: rgb(255, 141, 30);
 }
+
 .titlemain {
-  margin: 2rem;
+  margin: 1rem;
   font-family: sans-serif;
   font-weight: bold;
   color: rgb(252, 134, 16);
   font-size: 3rem;
-  font-family: "Manjari";
+  font-family: "Rajdhani", sans-serif;
 }
+
 .member_container {
   margin: 15rem;
 }
+
 main div {
   display: -ms-grid;
   display: grid;
@@ -339,6 +381,8 @@ main div .card {
   transition: -webkit-transform 0.4s;
   transition: transform 0.4s;
   transition: transform 0.4s, -webkit-transform 0.4s;
+  background-color: #19191936;
+
 }
 
 main div .card:hover {
@@ -356,27 +400,32 @@ main div .card img {
 }
 
 main div .card .desc {
-  color: black;
+  color: #080200;
 }
+
 .imagecontain {
-  border: 2px solid white;
+  border: 2px solid #f7f7f7;
   border-radius: 5px;
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 201px;
 }
+
 .imagecontain .middle .text {
   font-size: 18px;
 }
+
 .imagecontain:hover .img {
   opacity: 0.6;
 }
+
 .imagecontain:hover .middle {
   opacity: 1;
 }
+
 .imagecontain:hover .profilename {
   opacity: 0;
 }
+
 .profilename {
   transition: 1s ease;
   opacity: 1;
@@ -387,33 +436,40 @@ main div .card .desc {
   -ms-transform: translate(-50%, -50%); */
   text-align: left;
 }
+
 .name {
   font-size: 1.4em;
 
   font-weight: bold;
 }
+
 .position {
   font-size: 1em;
   font-family: "Manjari";
 }
 
 
-.mynavv{
-  padding:3px;
+.mynavv {
+  padding: 3px;
   padding-left: 5px;
 }
-.admin-div{
-  color:black;
-  font-size:1rem;
-  
+
+.admin-div {
+  color: black;
+  font-size: 1rem;
+
   border: 1px solid white;
 
 }
-.admin-div:hover{
+
+.admin-div:hover {
   border-color: #ff8d1e;
   color: #ff8d1e;
 }
 
-ul li a{
-  font-size:1rem;
+ul li a {
+  font-size: 1rem;
+}
+p.description{
+  height:3rem;
 }

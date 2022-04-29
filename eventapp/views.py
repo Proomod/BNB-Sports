@@ -17,61 +17,64 @@ from django.conf import settings
 from django.templatetags.static import static
 from django.views import generic
 
-def edit_event(request,id):
-    if request.method=='POST':
+
+def edit_event(request, id):
+    if request.method == "POST":
         if request.user.is_authenticated:
-            date=request.POST["date"]
-            title=request.POST["title"]
-            description=request.POST["description"]
-            event=Postevent.objects.get(id=id)
+            date = request.POST["date"]
+            title = request.POST["title"]
+            description = request.POST["description"]
+            event = Postevent.objects.get(id=id)
             try:
-                completed=request.POST["completed"]
-                event.completed=True
+                completed = request.POST["completed"]
+                event.completed = True
             except:
-                event.completed=False
-            if(title):
-                event.title=title
-            if(date):
-                event.date=date
-            if(description):
-                event.description=description
+                event.completed = False
+            if title:
+                event.title = title
+            if date:
+                event.date = date
+            if description:
+                event.description = description
             event.save()
             return redirect("/")
-    elif request.method=='GET':
+    elif request.method == "GET":
         try:
-            event=event=models.Postevent.objects.get(id=id)
-            if(event.completed):
-                event.checked="checked"
+            event = event = models.Postevent.objects.get(id=id)
+            if event.completed:
+                event.checked = "checked"
             else:
-                event.checked="unchecked"
+                event.checked = "unchecked"
         except:
             return redirect("/")
 
-        return render(request,"edit_event.html",{"event":event})
-def add_video(request,id):
-    if request.method=='POST':
+        return render(request, "edit_event.html", {"event": event})
+
+
+def add_video(request, id):
+    if request.method == "POST":
         if request.user.is_authenticated:
-            post=models.Postevent.objects.get(id=id)
-            title=request.POST["video_title"]
-            url=request.POST["video_url"]
-            if (title and url):
-                video=Videos()
-                video.title=title
-                video.url=url
+            post = models.Postevent.objects.get(id=id)
+            title = request.POST["video_title"]
+            url = request.POST["video_url"]
+            if title and url:
+                video = Videos()
+                video.title = title
+                video.url = url
                 video.save()
                 return redirect("/admin_page")
-    
-    elif request.method=='GET':
-        return render(request,"video_add.html",{"id":id})
+
+    elif request.method == "GET":
+        return render(request, "video_add.html", {"id": id})
     return redirect("/")
-        
+
+
 def index(request):
     events = models.Postevent.objects.order_by("-created_date")
-    images=[]
+    images = []
     for event in events:
-        event.images=models.Images.objects.all().order_by("-id")
-    
-      
+        event.images = models.Images.objects.all().order_by("-id")
+        break
     return render(request, "gallery.html", {"events": events})
 
 
@@ -92,14 +95,13 @@ def post(request):
             post_form.save()
             id = str(post_form.id)
             for form in formset.cleaned_data:
-                # this helps to not crash if the user
-                # do not upload all the photos
+
                 if form:
                     image = form["image"]
                     photo = models.Images(post=post_form, image=image)
                     photo.save()
             messages.success(request, "Go to homepage to see changes")
-            return redirect("/admin_page/")
+            return redirect("/add_video/"+id)
         else:
             print(postForm.errors, formset.errors)
     else:
@@ -124,16 +126,13 @@ def memberimage(request):
 
 
 def homePage(request):
-    videos = models.Videos.objects.all().order_by("-id")[
-            :3
-        ]
+    videos = models.Videos.objects.all().order_by("-id")[:3]
     try:
         about = About.objects.all().order_by("-id")[0]
     except:
-        about=About()
-        about.body="This is about page"
-     
-    
+        about = About()
+        about.body = "This is about page"
+
     people = People.objects.all()
     upcoming_events = models.Postevent.objects.filter(completed=False).order_by(
         "-created_date"
@@ -164,12 +163,10 @@ def homePage(request):
             "team": people,
             "upcoming_events": upcoming_events,
             "completed_events": completed_events,
-            "videos":videos,
-            "about":about
+            "videos": videos,
+            "about": about,
         },
     )
-
-
 
 
 def event_detail(request, id):
@@ -178,12 +175,12 @@ def event_detail(request, id):
 
         eventdetail.images = models.Images.objects.filter(post=eventdetail)
     except:
-        eventdetail=[]
+        eventdetail = []
     return render(request, "event_detail.html", {"event": eventdetail})
 
 
 def upcoming_events(request):
-    more=False
+    more = False
     ids = []
     events = models.Postevent.objects.filter(completed=False).order_by("-created_date")[
         :10
@@ -195,7 +192,7 @@ def upcoming_events(request):
         ids.append(i.id)
         i.reduceddescription = i.description[:100]
         i.images = models.Images.objects.filter(post=i)
-    if(len(ids)):
+    if len(ids):
         ids.sort()
         smallest_id = ids[0]
     else:
@@ -206,8 +203,9 @@ def upcoming_events(request):
         {"events": events, "smallest_id": smallest_id, "completed": "u", "more": more},
     )
 
+
 def completed_events(request):
-    more=False
+    more = False
     ids = []
     events = models.Postevent.objects.filter(completed=True).order_by("-created_date")[
         :10
@@ -219,7 +217,7 @@ def completed_events(request):
         ids.append(i.id)
         i.reduceddescription = i.description[:100]
         i.images = models.Images.objects.filter(post=i)
-    if(len(ids)):
+    if len(ids):
         ids.sort()
         smallest_id = ids[0]
     else:
@@ -248,7 +246,7 @@ def more_events(request, c, id):
                 ids.append(i.id)
                 i.reduceddescription = i.description[:100]
                 i.images = models.Images.objects.filter(post=i)
-            if(len(ids)):
+            if len(ids):
                 ids.sort()
                 smallest_id = ids[0]
             else:
@@ -281,9 +279,9 @@ def more_events(request, c, id):
             ids.append(i.id)
             i.reduceddescription = i.description[:100]
             i.images = models.Images.objects.filter(post=i)
-        if(len(ids)):
-                ids.sort()
-                smallest_id = ids[0]
+        if len(ids):
+            ids.sort()
+            smallest_id = ids[0]
         else:
             smallest_id = 0
         return render(
@@ -305,18 +303,20 @@ def deletepost(request, id):
     deleted = models.Postevent.objects.get(id=id)
     deleted.delete()
     return redirect("/")
+
+
 def videos(request):
-    if request.method=="GET":
-        more=False
+    if request.method == "GET":
+        more = False
         ids = []
-        videos = models.Videos.objects.all().order_by("-id")[
-            :10
-        ]
+        videos = models.Videos.objects.all().order_by("-id")[:10]
+        for video in videos:
+            ids.append(video.id)
         count = videos.count()
         if count == 10:
             more = True
-        
-        if(len(ids)):
+
+        if len(ids):
             ids.sort()
             smallest_id = ids[0]
         else:
@@ -324,33 +324,53 @@ def videos(request):
         return render(
             request,
             "videos.html",
-            {"videos": videos, "smallest_id": smallest_id, "more": more}
+            {"videos": videos, "smallest_id": smallest_id, "more": more},
         )
-    
-    elif request.method=="POST":
+  
+
+    elif request.method == "POST":
         if request.user.is_authenticated:
-            title=request.POST["video_title"]
-            url=request.POST["video_url"]
-            video=models.Videos()
-            if(title):
-                video.title=title
-                if(url):
-                    link_id=[]
-                    index=0
+            title = request.POST["video_title"]
+            url = request.POST["video_url"]
+            video = models.Videos()
+            if title:
+                video.title = title
+                if url:
+                    link_id = []
+                    index = 0
                     for i in url:
-                        index+=1
-                        if (i == '='):
-                            link_id=url[index:len(url)]
-                            video.url=link_id
+                        index += 1
+                        if i == "=":
+                            link_id = url[index : len(url)]
+                            video.url = link_id
                             video.save()
                             break
-                            
+
                     return redirect("/")
-                    
-                
+
         else:
             return HttpResponse("There was an error.. Try again!!!")
         return redirect("/")
+def more_videos(request, id):
+    more = False
+    videos=models.Videos.objects.filter(id__lteid).order_by("-id")[:10]
+    for video in videos:
+        ids.append(video.id)
+    count = videos.count()
+    if count == 10:
+        more = True
+
+    if len(ids):
+        ids.sort()
+        smallest_id = ids[0]
+    else:
+        smallest_id = 0
+    return render(
+        request,
+        "videos.html",
+        {"videos": videos, "smallest_id": smallest_id, "more": more},
+    )
+
 
 @login_required
 def add_members(request, id):
@@ -360,7 +380,7 @@ def add_members(request, id):
         for person in people:
             try:
                 member = models.Members.objects.filter(event=event).get(person=person)
-                if member:  
+                if member:
                     person.truth = True
             except:
                 person.truth = False
@@ -397,30 +417,33 @@ def add_member(request, pid, mid):
                 return redirect("/")
         except:
             return redirect("/")
+
+
 @login_required
-def delete_photo(request,id):
-    if request.method=="POST":
-        url=request.POST["url"]
+def delete_photo(request, id):
+    if request.method == "POST":
+        url = request.POST["url"]
         if request.user.is_authenticated:
             try:
-                photo=Images.objects.get(id=id)
-                
+                photo = Images.objects.get(id=id)
+
                 photo.delete()
-                
+
                 return redirect(url)
             except:
-                
-                return redirect(url)
-    return redirect("/")
-def delete_video(request,id):
-    if request.method=="POST":
-        url=request.POST["url"]
-        if request.user.is_authenticated:
-            try:
-                photo=Videos.objects.get(id=id)
-                photo.delete()
-                return redirect(url)
-            except:
+
                 return redirect(url)
     return redirect("/")
 
+
+def delete_video(request, id):
+    if request.method == "POST":
+        url = request.POST["url"]
+        if request.user.is_authenticated:
+            try:
+                photo = Videos.objects.get(id=id)
+                photo.delete()
+                return redirect(url)
+            except:
+                return redirect(url)
+    return redirect("/")
